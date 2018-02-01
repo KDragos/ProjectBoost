@@ -19,12 +19,11 @@ public class Rocket : MonoBehaviour {
     {
         if(Input.GetKey(KeyCode.Space)) {
             rigidbody.AddRelativeForce(Vector3.up);
-            Debug.Log("Thrust.");
         }
-        if (Input.GetKey(KeyCode.A)) {
-            Debug.Log("Rotate left");
-        } else if (Input.GetKey(KeyCode.D)) {
-            Debug.Log("Rotate right.");
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+            transform.Rotate(Vector3.forward);
+        } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+            transform.Rotate(-Vector3.forward);
         }
     }
 }
