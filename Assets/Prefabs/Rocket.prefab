@@ -418,8 +418,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d916d0acf54dc5f4d9ea2a218a60208b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 0.8
+  m_Volume: 0.5
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -500,7 +500,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 198568796239868862}
   rcsThrust: 100
-  mainThrust: 25
+  mainThrust: 100
+  mainEngine: {fileID: 8300000, guid: eee56f97591a725459e9c131e8b711e6, type: 3}
+  deathSound: {fileID: 8300000, guid: a7a49220215c8d3428cd28b94699031b, type: 3}
+  trancendSound: {fileID: 8300000, guid: 054b2621ecd98c44f9ebfb1cea917d35, type: 3}
 --- !u!198 &198568796239868862
 ParticleSystem:
   m_ObjectHideFlags: 1
