@@ -55,9 +55,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4959930622575540}
-  - component: {fileID: 65619222884206958}
-  - component: {fileID: 65687816336421644}
-  - component: {fileID: 65664826088722180}
   m_Layer: 0
   m_Name: node_id38
   m_TagString: Untagged
@@ -107,6 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4875944486999730}
   - component: {fileID: 54928277654085864}
+  - component: {fileID: 82746132827700982}
   - component: {fileID: 114686629993276040}
   m_Layer: 0
   m_Name: Rocket
@@ -378,42 +376,86 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 8aca84049abbe9247855c4b45f59702d, type: 3}
---- !u!65 &65619222884206958
-BoxCollider:
+--- !u!82 &82746132827700982
+AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1557250274475364}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.0101976, y: 1, z: 2.4250755}
-  m_Center: {x: 0.0050985054, y: 0, z: 0.9709862}
---- !u!65 &65664826088722180
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1557250274475364}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.6621101, y: 1.6679924, z: 0.6694744}
-  m_Center: {x: 0.05061801, y: -0.0019514593, z: -1.9244257}
---- !u!65 &65687816336421644
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1557250274475364}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 2.243761, y: 2.1103935, z: 1.214298}
-  m_Center: {x: -0.04448592, y: -0.043068964, z: -0.9269288}
+  m_GameObject: {fileID: 1896211914352368}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d916d0acf54dc5f4d9ea2a218a60208b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 0.8
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114686629993276040
 MonoBehaviour:
   m_ObjectHideFlags: 1
