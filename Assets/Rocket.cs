@@ -4,28 +4,24 @@ using UnityEngine.SceneManagement;
 public class Rocket : MonoBehaviour {
     private Rigidbody rigidbody;
     private AudioSource audio;
-    public ParticleSystem particles;
+    public ParticleSystem[] particles;
+    public AudioClip[] sounds;
+
+    [SerializeField]
+    float levelLoadDelay = 2;
     [SerializeField]
     float rcsThrust = 100f;
     [SerializeField]
     float mainThrust = 100f;
-    [SerializeField]
-    AudioClip mainEngine;
-    [SerializeField]
-    AudioClip deathSound;
-    [SerializeField]
-    AudioClip trancendSound;
 
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
 
-    // Use this for initialization
     void Start () {
         rigidbody = GetComponent<Rigidbody>();
         audio = GetComponent<AudioSource>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
         if(state.Equals(State.Alive)) {
             RespondToThrustInput();
@@ -41,17 +37,31 @@ public class Rocket : MonoBehaviour {
             case "Friendly":
                 break;
             case "Finish":
-                state = State.Transcending;
-                audio.PlayOneShot(trancendSound);
-                Invoke("LoadNextLevel", 1f);
-                LoadNextLevel();
+                StartSuccessSequence();
                 break;
             default:
-                state = State.Dying;
-                audio.PlayOneShot(deathSound);
-                Invoke("ReloadCurrentLevel", 1f);
+                StartDeathSequence();
                 break;
         }
+    }
+
+    private void StartSuccessSequence()
+    {
+        state = State.Transcending;
+        audio.Stop();
+        audio.PlayOneShot(sounds[1]);
+        particles[1].Play();
+        Invoke("LoadNextLevel", levelLoadDelay);
+        LoadNextLevel();
+    }
+
+    private void StartDeathSequence()
+    {
+        state = State.Dying;
+        audio.Stop();
+        particles[2].Play();
+        audio.PlayOneShot(sounds[2]);
+        Invoke("ReloadCurrentLevel", levelLoadDelay);
     }
 
     private void ReloadCurrentLevel()
@@ -84,19 +94,19 @@ public class Rocket : MonoBehaviour {
             ApplyThrust();
         } else {
             audio.Stop();
-            particles.Stop();
+            particles[0].Stop();
         }
     }
 
     private void ApplyThrust()
     {
+        rigidbody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
         if (!audio.isPlaying) {
-            audio.PlayOneShot(mainEngine);
+            audio.PlayOneShot(sounds[0]);
         }
-        if (!particles.isPlaying) {
-            particles.Play();
+        if (!particles[0].isPlaying) {
+            particles[0].Play();
         }
         //Debug.Log("Thrust");
-        rigidbody.AddRelativeForce(Vector3.up * mainThrust);
     }
 }
