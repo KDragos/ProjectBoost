@@ -3,35 +3,71 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Rocket : MonoBehaviour {
-    Rigidbody rigidbody;
-    AudioSource audio;
+    private Rigidbody rigidbody;
+    private AudioSource audio;
+    public ParticleSystem particles;
+    [SerializeField]
+    float rcsThrust = 100f;
+    [SerializeField]
+    float mainThrust = 100f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         rigidbody = GetComponent<Rigidbody>();
         audio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        ProcessInput();
+        Thrust();
+        Rotate();
 	}
 
-    void ProcessInput()
+    private void OnCollisionEnter(Collision collision)
     {
-        if(Input.GetKey(KeyCode.Space)) {
-            if(!audio.isPlaying) {
+        switch (collision.gameObject.tag) {
+            case "Friendly":
+                Debug.Log("Ok");
+                break;
+            case "Fuel":
+                Debug.Log("Fuel");
+                break;
+            default:
+                Debug.Log("Dead");
+                break;
+        }
+    }
+
+    void Rotate()
+    {
+        rigidbody.freezeRotation = true;
+        float rcsThrust = 100f;
+        float rotationThisFrame = rcsThrust * Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+            transform.Rotate(Vector3.forward * rotationThisFrame);
+        } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+            transform.Rotate(-Vector3.forward * rotationThisFrame);
+        }
+        rigidbody.freezeRotation = false;
+    }
+
+    private void Thrust()
+    {
+        if (Input.GetKey(KeyCode.Space)) {
+            if (!audio.isPlaying) {
                 audio.Play();
             }
-            rigidbody.AddRelativeForce(Vector3.up);
+            if(!particles.isPlaying) {
+                particles.Play();
+            }
+            //Debug.Log("Thrust");
+            rigidbody.AddRelativeForce(Vector3.up * mainThrust);
         }
-        if(Input.GetKeyUp(KeyCode.Space)) {
+        if (Input.GetKeyUp(KeyCode.Space)) {
             audio.Stop();
-        }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-            transform.Rotate(Vector3.forward);
-        } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-            transform.Rotate(-Vector3.forward);
+            particles.Stop();
+            //Debug.Log("Stop thrust");
         }
     }
 }
