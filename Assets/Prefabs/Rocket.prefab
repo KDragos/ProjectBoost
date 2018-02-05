@@ -252,7 +252,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896211914352368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.56, y: 3, z: 0}
+  m_LocalPosition: {x: -35.73, y: 9.690001, z: 0}
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_Children:
   - {fileID: 4959930622575540}
@@ -568,8 +568,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eee56f97591a725459e9c131e8b711e6, type: 3}
   - {fileID: 8300000, guid: 054b2621ecd98c44f9ebfb1cea917d35, type: 3}
   - {fileID: 8300000, guid: a7a49220215c8d3428cd28b94699031b, type: 3}
-  rcsThrust: 100
-  mainThrust: 200
+  levelLoadDelay: 3
+  rcsThrust: 150
+  mainThrust: 1200
 --- !u!198 &198079529971690092
 ParticleSystem:
   m_ObjectHideFlags: 1
